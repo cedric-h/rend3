@@ -171,11 +171,11 @@ impl ObjectManager {
                     entries: &[
                         BindGroupEntry {
                             binding: 0,
-                            resource: BindingResource::Buffer(object_info_buffer.inner.slice(..)),
+                            resource: object_info_buffer.inner.as_entire_binding(),
                         },
                         BindGroupEntry {
                             binding: 1,
-                            resource: BindingResource::Buffer(material_translation_buffer.inner.slice(..)),
+                            resource: material_translation_buffer.inner.as_entire_binding(),
                         },
                     ],
                 })

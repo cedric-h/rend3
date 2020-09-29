@@ -36,7 +36,7 @@ impl WrappedUniform {
             layout: uniform_bgl,
             entries: &[BindGroupEntry {
                 binding: 0,
-                resource: BindingResource::Buffer(buffer.slice(..)),
+                resource: buffer.as_entire_binding(),
             }],
         });
 

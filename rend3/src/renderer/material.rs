@@ -104,7 +104,7 @@ impl MaterialManager {
                 layout: &material_bgl,
                 entries: &[BindGroupEntry {
                     binding: 0,
-                    resource: BindingResource::Buffer(buffer.inner.slice(..)),
+                    resource: buffer.inner.as_entire_binding(),
                 }],
             })
         })

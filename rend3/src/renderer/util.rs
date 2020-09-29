@@ -10,7 +10,7 @@ use wgpu::{
     AddressMode, BindGroup, BindGroupDescriptor, BindGroupEntry, BindGroupLayout, BindGroupLayoutDescriptor,
     BindGroupLayoutEntry, BindingResource, BindingType, BlendDescriptor, ColorStateDescriptor, ColorWrite,
     CompareFunction, CullMode, DepthStencilStateDescriptor, Device, Extent3d, FilterMode, FrontFace, IndexFormat,
-    PipelineLayout, PipelineLayoutDescriptor, PresentMode, PrimitiveTopology, ProgrammableStageDescriptor,
+    PipelineLayout, PipelineLayoutDescriptor, PolygonMode, PresentMode, PrimitiveTopology, ProgrammableStageDescriptor,
     RasterizationStateDescriptor, RenderPipeline, RenderPipelineDescriptor, Sampler, SamplerDescriptor, ShaderModule,
     ShaderStage, StencilStateDescriptor, Surface, SwapChain, SwapChainDescriptor, Texture, TextureComponentType,
     TextureDescriptor, TextureDimension, TextureUsage, TextureView, TextureViewDescriptor, TextureViewDimension,
@@ -191,6 +191,7 @@ pub fn create_sampler(device: &Device) -> Sampler {
         lod_max_clamp: 100.0,
         compare: None,
         anisotropy_clamp: NonZeroU8::new(16),
+        border_color: None,
     })
 }
 
@@ -291,6 +292,7 @@ pub fn create_render_pipeline(
         rasterization_state: Some(RasterizationStateDescriptor {
             front_face: FrontFace::Cw,
             cull_mode: CullMode::Back,
+            polygon_mode: PolygonMode::Fill,
             clamp_depth: false,
             depth_bias: 0,
             depth_bias_slope_scale: 0.0,

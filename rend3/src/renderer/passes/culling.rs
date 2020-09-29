@@ -130,15 +130,15 @@ impl CullingPass {
             entries: &[
                 BindGroupEntry {
                     binding: 0,
-                    resource: BindingResource::Buffer(output_buffer.slice(..)),
+                    resource: output_buffer.as_entire_binding(),
                 },
                 BindGroupEntry {
                     binding: 1,
-                    resource: BindingResource::Buffer(indirect_buffer.slice(..)),
+                    resource: indirect_buffer.as_entire_binding(),
                 },
                 BindGroupEntry {
                     binding: 2,
-                    resource: BindingResource::Buffer(count_buffer.slice(..)),
+                    resource: count_buffer.as_entire_binding(),
                 },
             ],
         });
@@ -148,7 +148,7 @@ impl CullingPass {
             layout: output_noindirect_bgl,
             entries: &[BindGroupEntry {
                 binding: 0,
-                resource: BindingResource::Buffer(output_buffer.slice(..)),
+                resource: output_buffer.as_entire_binding(),
             }],
         });
 

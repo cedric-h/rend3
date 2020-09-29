@@ -17,6 +17,7 @@ use crate::{
 };
 use parking_lot::{Mutex, RwLock};
 use raw_window_handle::HasRawWindowHandle;
+use std::path::Path;
 use std::{cell::RefCell, sync::Arc};
 use switchyard::Switchyard;
 use wgpu::{BackendBit, DeviceDescriptor, Instance, PowerPreference, RequestAdapterOptions};
@@ -123,7 +124,7 @@ where
 
     span_transfer!(_ -> imgui_guard, INFO, "Creating Imgui Renderer");
 
-    let imgui_renderer = imgui_wgpu::Renderer::new(imgui, &device, &queue, SWAPCHAIN_FORMAT);
+    // let imgui_renderer = imgui_wgpu::Renderer::new(imgui, &device, &queue, SWAPCHAIN_FORMAT);
 
     span_transfer!(imgui_guard -> _);
 
@@ -156,8 +157,7 @@ where
         depth_pass,
         opaque_pass,
 
-        _imgui_renderer: imgui_renderer,
-
+        // _imgui_renderer: imgui_renderer,
         options: RwLock::new(options),
     }))
 }
